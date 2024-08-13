@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zing\LaravelScout\OpenSearch\Tests;
+namespace Vormkracht10\LaravelScout\OpenSearch\Tests;
 
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Collection;
@@ -14,12 +14,12 @@ use Laravel\Scout\EngineManager;
 use Laravel\Scout\Jobs\RemoveFromSearch;
 use Mockery as m;
 use OpenSearch\Client;
-use Zing\LaravelScout\OpenSearch\Engines\OpenSearchEngine;
-use Zing\LaravelScout\OpenSearch\Tests\Fixtures\CustomKeySearchableModel;
-use Zing\LaravelScout\OpenSearch\Tests\Fixtures\EmptySearchableModel;
-use Zing\LaravelScout\OpenSearch\Tests\Fixtures\SearchableAndSoftDeletesModel;
-use Zing\LaravelScout\OpenSearch\Tests\Fixtures\SearchableModel;
-use Zing\LaravelScout\OpenSearch\Tests\Fixtures\SoftDeletedEmptySearchableModel;
+use Vormkracht10\LaravelScout\OpenSearch\Engines\OpenSearchEngine;
+use Vormkracht10\LaravelScout\OpenSearch\Tests\Fixtures\CustomKeySearchableModel;
+use Vormkracht10\LaravelScout\OpenSearch\Tests\Fixtures\EmptySearchableModel;
+use Vormkracht10\LaravelScout\OpenSearch\Tests\Fixtures\SearchableAndSoftDeletesModel;
+use Vormkracht10\LaravelScout\OpenSearch\Tests\Fixtures\SearchableModel;
+use Vormkracht10\LaravelScout\OpenSearch\Tests\Fixtures\SoftDeletedEmptySearchableModel;
 
 /**
  * @internal

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zing\LaravelScout\OpenSearch\Tests;
+namespace Vormkracht10\LaravelScout\OpenSearch\Tests;
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Scout\Builder;

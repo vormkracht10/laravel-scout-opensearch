@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zing\LaravelScout\OpenSearch\Engines;
+namespace Vormkracht10\LaravelScout\OpenSearch\Engines;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

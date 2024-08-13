@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zing\LaravelScout\OpenSearch\Tests;
+namespace Vormkracht10\LaravelScout\OpenSearch\Tests;
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Config;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Laravel\Scout\ScoutServiceProvider;
 use OpenSearch\ClientBuilder;
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use Zing\LaravelScout\OpenSearch\OpenSearchServiceProvider;
+use Vormkracht10\LaravelScout\OpenSearch\OpenSearchServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {

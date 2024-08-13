@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zing\LaravelScout\OpenSearch\Tests\Fixtures;
+namespace Vormkracht10\LaravelScout\OpenSearch\Tests\Fixtures;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Zing\LaravelScout\OpenSearch;
+namespace Vormkracht10\LaravelScout\OpenSearch;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\EngineManager;
 use OpenSearch\Client;
 use OpenSearch\ClientBuilder;
-use Zing\LaravelScout\OpenSearch\Engines\OpenSearchEngine;
+use Vormkracht10\LaravelScout\OpenSearch\Engines\OpenSearchEngine;
 
 class OpenSearchServiceProvider extends ServiceProvider
 {
