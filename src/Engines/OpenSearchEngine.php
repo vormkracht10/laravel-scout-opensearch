@@ -147,50 +147,96 @@ class OpenSearchEngine extends Engine
             return \call_user_func($builder->callback, $this->client, $builder->query, $options);
         }
 
-        $query = $builder->query;
-        $must = collect([
-            [
-                'query_string' => [
-                    'query' => $query,
-                ],
-            ],
-        ]);
-        $must = $must->merge(collect($builder->wheres)
-            ->map(static fn ($value, $key): array => [
-                'term' => [
-                    $key => $value,
-                ],
-            ])->values())->values();
-
-        if (property_exists($builder, 'whereIns')) {
-            $must = $must->merge(collect($builder->whereIns)->map(static fn ($values, $key): array => [
-                'terms' => [
-                    $key => $values,
-                ],
-            ])->values())->values();
-        }
-
-        $mustNot = collect();
-        if (property_exists($builder, 'whereNotIns')) {
-            $mustNot = $mustNot->merge(collect($builder->whereNotIns)->map(static fn ($values, $key): array => [
-                'terms' => [
-                    $key => $values,
-                ],
-            ])->values())->values();
-        }
-
         $options['query'] = [
             'bool' => [
-                'must' => $must->all(),
-                'must_not' => $mustNot->all(),
-            ],
+                'must' => [
+                    [
+                        'query_string'  => [
+                            'query' => $builder->query
+                        ]
+                    ]
+                ],
+                'should' => [
+                    
+                ],
+                'must_not' => [
+
+                ],
+                'filter' => [
+                ]
+            ]
         ];
+
+        collect($builder->wheres)
+            ->each(function ($value, $key) use (&$options) {
+                if (is_string($value)) {
+                    $options['query']['bool']['must'][] = [
+                        'match' => [
+                            $key => $value
+                        ]
+                    ];
+                }
+                else {
+                    $options['query']['bool']['must'][] = [
+                        'term' => [
+                            $key => $value
+                        ]
+                    ];
+                }
+            });
+
+        if (property_exists($builder, 'whereIns')) {
+            collect($builder->whereIns)
+                ->each(function ($values, $key) use (&$options) {
+                    if (is_string($values[0])) {
+                        $options['query']['bool']['must'][] = [
+                            'match' => [
+                                $key => [
+                                    'query' => implode(' ', $values),
+                                    'operator' => 'or',
+                                    'minimum_should_match' => 1
+                                ]
+                            ]
+                        ];
+                    }
+                    else {
+                        $options['query']['bool']['must'][] = [
+                            'terms' => [
+                                $key => $values
+                            ]
+                        ];
+                    }
+                });
+        }
+
+        if (property_exists($builder, 'whereNotIns')) {
+            collect($builder->whereNotIns)
+                ->each(function ($values, $key) use (&$options) {
+                    if (is_string($values[0])) {
+                        foreach ($values as $value) {
+                            $options['query']['bool']['must_not'][] = [
+                                'match' => [
+                                    $key => $value
+                                ]
+                            ];
+                        }
+                    }
+                    else {
+                        $options['query']['bool']['must_not'][] = [
+                            'terms' => [
+                                $key => $values
+                            ]
+                        ];
+                    }
+                });
+        }
 
         $options['sort'] = collect($builder->orders)->map(static fn ($order): array => [
             $order['column'] => [
                 'order' => $order['direction'],
             ],
         ])->all();
+
         $result = $this->client->search([
             'index' => $index,
             'body' => $options,
