@@ -1,14 +1,19 @@
 {
-    "name": "zing/laravel-scout-opensearch",
+    "name": "vormkracht10/laravel-scout-opensearch",
     "description": "Laravel Scout custom engine for OpenSearch",
     "keywords": ["opensearch", "laravel", "scout", "search"],
     "license": "MIT",
-    "homepage": "https://github.com/zingimmick/laravel-scout-opensearch",
+    "homepage": "https://github.com/vormkracht10/laravel-scout-opensearch",
     "support": {
-        "issues": "https://github.com/zingimmick/laravel-scout-opensearch/issues",
-        "source": "https://github.com/zingimmick/laravel-scout-opensearch"
+        "issues": "https://github.com/vormkracht10/laravel-scout-opensearch/issues",
+        "source": "https://github.com/vormkracht10/laravel-scout-opensearch"
     },
     "authors": [
+        {
+            "name": "Mathieu de Ruiter",
+            "email": "mathieu@vormkracht10.nl",
+            "homepage": "https://github.com/casmo"
+        },
         {
             "name": "zingimmick",
             "email": "zingimmick@outlook.com",
@@ -34,17 +39,16 @@
         "nunomaduro/larastan": "^1.0 || ^2.0",
         "orchestra/testbench": "^4.5 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
         "phpstan/phpstan-mockery": "^1.0",
-        "phpunit/phpunit": "^9.3.3 || ^10.0 || ^11.0",
-        "zing/coding-standard": "^6.4 || ^7.0"
+        "phpunit/phpunit": "^9.3.3 || ^10.0 || ^11.0"
     },
     "autoload": {
         "psr-4": {
-            "Zing\\LaravelScout\\OpenSearch\\": "src"
+            "Vormkracht10\\LaravelScout\\OpenSearch\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zing\\LaravelScout\\OpenSearch\\Tests\\": "tests"
+            "Vormkracht10\\LaravelScout\\OpenSearch\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -70,7 +74,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Zing\\LaravelScout\\OpenSearch\\OpenSearchServiceProvider"
+                "Vormkracht10\\LaravelScout\\OpenSearch\\OpenSearchServiceProvider"
             ]
         }
     },
